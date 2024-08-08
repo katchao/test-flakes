@@ -19,7 +19,7 @@ jobs:
       - name: Run Jest Tests
         run: npm run jest-test
 
-      - name: Run Jest Tests
+      - name: Upload Test Results
         uses: trunk-io/analytics-uploader@main
         # Upload the results even if the tests fail
         if: "!cancelled()"

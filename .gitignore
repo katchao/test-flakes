@@ -44,9 +44,6 @@ test-results/
 playwright-report/
 .e2e_tests_auth/
 
-# Prefer yarn install and ignore package-lock
-**/package-lock.json
-
 # Jest
 coverage
 junit.xml
