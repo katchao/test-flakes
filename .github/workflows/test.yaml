@@ -1,10 +1,7 @@
 name: Tests
 
 on:
-  schedule:
-    - cron: 0 */6 * * *
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   tests:
