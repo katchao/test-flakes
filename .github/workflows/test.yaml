@@ -12,15 +12,11 @@ jobs:
 
       - name: Use Node.js
         uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
 
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 8
+      - name: Install Dependencies
+        run: npm ci
 
       - name: Run Jest Tests
-        if: ${{ always() }}
         uses: trunk-io/analytics-uploader@main
         with:
           # Path to your test results.
@@ -30,15 +26,3 @@ jobs:
           # Provide your Trunk API token as a GitHub secret.
           token: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
           run: npm run jest-test
-
-      - name: Upload results
-        uses: trunk-io/analytics-uploader@main
-        with:
-          # Path to your test results.
-          junit-paths: target/path/**/*_test.xml
-          # Provide your Trunk organization url slug.
-          org-url-slug: xyzw-io
-          # Provide your Trunk API token as a GitHub secret.
-          # See https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions.
-          token: ${{ secrets.TRUNK_API_TOKEN }}
-        continue-on-error: true
