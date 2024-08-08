@@ -17,7 +17,12 @@ jobs:
         run: npm ci
 
       - name: Run Jest Tests
+        run: npm run jest-test
+
+      - name: Run Jest Tests
         uses: trunk-io/analytics-uploader@main
+        # Upload the results even if the tests fail
+        if: "!cancelled()"
         with:
           # Path to your test results.
           junit-paths: "**/*_test.xml,**/junitresults-*.xml"
@@ -25,4 +30,5 @@ jobs:
           org-slug: katherines-org
           # Provide your Trunk API token as a GitHub secret.
           token: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          run: npm run jest-test
+        # don't fail this job if the upload fails
+        continue-on-error: true
