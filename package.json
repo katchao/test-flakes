@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "jest-test": "jest tests/jest/**/*.js --config=tests/jest/jest.config.json"
+    "jest-test": "jest tests/*.js --config=tests/jest.config.json"
   },
   "author": "",
   "license": "ISC",
