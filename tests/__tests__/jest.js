@@ -16,3 +16,13 @@ describe("Jest - Day of the Week Tests", () => {
     expect(["Saturday", "Sunday"]).toContain(today);
   });
 });
+
+describe("Jest - More Tests", () => {
+  test("this test should be broken", () => {
+    expect(true).toBe(false);
+  });
+
+  test("this test should be healthy", () => {
+    expect(true).toBe(true);
+  });
+});
