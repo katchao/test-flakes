@@ -26,7 +26,6 @@ jobs:
         # Upload the results even if the tests fail
         if: "!cancelled()"
         with:
-          # Path to your test results.
           junit-paths: "**/*_test.xml,**/junitresults-*.xml"
           # Provide your Trunk organization slug.
           org-slug: katherines-org
@@ -36,3 +35,14 @@ jobs:
         continue-on-error: true
         env:
           TRUNK_PUBLIC_API_ADDRESS: https://api.trunk-staging.io
+
+      - name: Upload test results with default CLI version to dev3
+        if: "!cancelled()"
+        continue-on-error: true
+        uses: trunk-io/analytics-uploader@main
+        with:
+          org-slug: katherines-org
+          token: ${{ secrets.TRUNK_DEV_3_ORG_API_TOKEN }}
+          junit-paths: "**/*_test.xml,**/junitresults-*.xml"
+        env:
+          TRUNK_PUBLIC_API_ADDRESS: https://api.dev3.trunk-staging.io
