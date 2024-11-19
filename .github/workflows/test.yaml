@@ -37,7 +37,6 @@ jobs:
           TRUNK_PUBLIC_API_ADDRESS: https://api.trunk-staging.io
 
       - name: Upload test results with default CLI version to dev3
-        if: "${{ inputs.cli-version == '' }}"
         continue-on-error: true
         uses: trunk-io/analytics-uploader@main
         with:
