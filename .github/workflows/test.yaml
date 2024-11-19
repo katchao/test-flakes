@@ -37,12 +37,13 @@ jobs:
           TRUNK_PUBLIC_API_ADDRESS: https://api.trunk-staging.io
 
       - name: Upload test results with default CLI version to dev3
-        if: "!cancelled()"
+        if: "${{ inputs.cli-version == '' }}"
         continue-on-error: true
         uses: trunk-io/analytics-uploader@main
         with:
           org-slug: katherines-org
           token: ${{ secrets.TRUNK_DEV_3_ORG_API_TOKEN }}
           junit-paths: "**/*_test.xml,**/junitresults-*.xml"
+          quarantine: true
         env:
           TRUNK_PUBLIC_API_ADDRESS: https://api.dev3.trunk-staging.io
